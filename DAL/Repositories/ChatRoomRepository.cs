@@ -15,5 +15,18 @@ namespace DAL.Repositories
                 .Include(x => x.Messages)
                 .FirstOrDefaultAsync(x => x.ID == id);
         }
+
+        public async Task<ChatRoom?> GetByNameWithMessagesAsync(string name)
+        {
+            return await _db.Set<ChatRoom>()
+                .Include(x => x.Messages)
+                .FirstOrDefaultAsync(x => x.Name == name);
+        }
+
+        public async Task<int> GetAmountAsync()
+        {
+            return await _db.Set<ChatRoom>()
+                .CountAsync();
+        }
     }
 }

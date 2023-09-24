@@ -1,8 +1,7 @@
 ﻿namespace BLL.DTOs
 {
-    public class ChatMessageDTO
+    public class ChatMessageDTO : BaseDTO
     {
-        public Guid ID { get; set; }
         public string Content { get; set; }
         public string? NickName { get; set; }
         public DateTime SendTime { get; set; }

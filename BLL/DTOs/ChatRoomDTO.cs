@@ -1,9 +1,7 @@
 ﻿namespace BLL.DTOs
 {
-    public class ChatRoomDTO
+    public class ChatRoomDTO : BaseDTO
     {
-        public Guid ID { get; set; }
-
         public string Name { get; set; }
 
         public IEnumerable<ChatMessageDTO>? Messages { get; set; }
