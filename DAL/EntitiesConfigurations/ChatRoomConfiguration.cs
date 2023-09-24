@@ -10,6 +10,9 @@ namespace DAL.EntitiesConfigurations
         {
             builder.HasKey(x => x.ID);
 
+            builder.HasIndex(x => x.Name)
+                .IsUnique();
+
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);
