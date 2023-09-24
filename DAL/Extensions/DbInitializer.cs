@@ -6,7 +6,7 @@ namespace DAL.Extensions
     {
         public static void Initialize(NetmailChatDatabaseContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
         }
     }
 }
