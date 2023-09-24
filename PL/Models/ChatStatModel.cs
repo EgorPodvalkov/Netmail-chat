@@ -1,0 +1,15 @@
+﻿namespace PL.Models
+{
+    public class ChatStatModel
+    {
+        /// <summary>
+        /// Amount of all chat rooms
+        /// </summary>
+        public int ChatRoomsAmount { get; set; }
+
+        /// <summary>
+        /// Amount of all chat messages
+        /// </summary>
+        public int ChatMessagesAmount { get; set; }
+    }
+}
