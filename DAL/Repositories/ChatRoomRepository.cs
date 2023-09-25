@@ -23,6 +23,14 @@ namespace DAL.Repositories
                 .FirstOrDefaultAsync(x => x.Name == name);
         }
 
+        public async Task<Guid?> GetIDByNameAsync(string name)
+        {
+            return await _db.Set<ChatRoom>()
+                .Where(x => x.Name.Equals(name))
+                .Select(x => x.ID)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<int> GetAmountAsync()
         {
             return await _db.Set<ChatRoom>()
