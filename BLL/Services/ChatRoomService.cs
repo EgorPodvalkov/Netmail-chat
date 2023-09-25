@@ -10,11 +10,13 @@ namespace BLL.Services
     public class ChatRoomService : IChatRoomService
     {
         private readonly IMapper _mapper;
+        private readonly IUoW _uow;
         private readonly IChatRoomRepository _repo;
 
         public ChatRoomService(IUoW uow, IMapper mapper)
         {
             _mapper = mapper;
+            _uow = uow;
             _repo = uow.GetChatRoomRepository();
         }
 
@@ -37,6 +39,20 @@ namespace BLL.Services
 
             var dto = _mapper.Map<ChatRoomDTO>(entity);
             return dto;
+        }
+
+        public async Task<Guid> GetChatIDByName(string name)
+        {
+            var id = await _repo.GetIDByNameAsync(name);
+
+            if (id == Guid.Empty)
+            {
+                var entity = new ChatRoom { Name = name };
+                await _repo.AddAsync(entity);
+                id = entity.ID;
+            }
+
+            return id.Value;
         }
 
         public async Task CreateAsync(ChatRoomDTO dto)

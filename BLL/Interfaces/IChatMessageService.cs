@@ -16,12 +16,17 @@ namespace BLL.Interfaces
         /// <returns></returns>
         Task<int> GetAmountAsync(bool uniq = false);
 
-        /*/// <summary>
+        /// <summary>
         /// Adds message to db 
         /// </summary>
         Task CreateAsync(ChatMessageDTO dto);
 
         /// <summary>
+        /// Adds message to db 
+        /// </summary>
+        Task AddMessageAsync(Guid chatRoomID, string content, string? NickName);
+
+        /*/// <summary>
         /// Modifies message in db
         /// </summary>
         Task UpdateAsync(ChatMessageDTO dto);

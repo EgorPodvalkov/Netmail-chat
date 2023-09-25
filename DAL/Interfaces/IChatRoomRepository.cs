@@ -15,6 +15,11 @@ namespace DAL.Interfaces
         Task<ChatRoom?> GetByNameWithMessagesAsync(string name);
 
         /// <summary>
+        /// Gets room ID by name
+        /// </summary>
+        Task<Guid?> GetIDByNameAsync(string name);
+
+        /// <summary>
         /// Gets amount of rooms in db
         /// </summary>
         Task<int> GetAmountAsync();

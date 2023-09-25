@@ -20,6 +20,13 @@ namespace BLL.Interfaces
         Task<int> GetAmountAsync();
 
         /// <summary>
+        /// Gets room chat ID by name from DB, otherwise creates new room with this name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<Guid> GetChatIDByName(string name);
+
+        /// <summary>
         /// Adds chat room to db 
         /// </summary>
         Task CreateAsync(ChatRoomDTO dto);
