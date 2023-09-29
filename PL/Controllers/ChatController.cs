@@ -56,5 +56,35 @@ namespace PL.Controllers
                 return Ok(responce);
             }
         }
+
+        [HttpPost("/GetJSON")]
+        public async Task<IActionResult> GetJSON()
+        {
+            const string badJSON = "You need use json (string ChatName).";
+            try
+            {
+                if (!Request.HasJsonContentType())
+                    throw new Exception(badJSON);
+
+                var request = await Request.ReadFromJsonAsync<ChatSendRequestModel>();
+                if (request is null
+                    || string.IsNullOrEmpty(request.ChatName))
+                    throw new Exception(badJSON);
+
+                var chatDTO = await _chatRoomBS.GetWithMessagesByNameAsync(request.ChatName)
+                    ?? throw new Exception($"No chatroom with name '{request.ChatName}' :(");
+
+                var responce = _mapper.Map<ChatWithMessagesModel>(chatDTO);
+                return Ok(responce);
+            }
+            catch (Exception ex)
+            {
+                var responce = new ChatWithMessagesModel
+                {
+                    Error = ex.Message
+                };
+                return Ok(responce);
+            }
+        }
     }
 }
