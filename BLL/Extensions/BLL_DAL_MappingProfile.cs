@@ -9,7 +9,7 @@ namespace BLL.Extensions
         public BLL_DAL_MappingProfile()
         {
             #region ChatMessage
-            CreateMap<ChatMessage, ChatMessageDTO>()
+            CreateMap<ChatMessageDTO, ChatMessage>()
                 .ForMember(ent => ent.ID, opt =>
                     opt.MapFrom(dto => dto.ID))
                 .ForMember(ent => ent.Content, opt =>
@@ -23,7 +23,7 @@ namespace BLL.Extensions
                 .ForMember(ent => ent.ChatRoom, opt =>
                     opt.MapFrom(dto => dto.ChatRoom));
 
-            CreateMap<ChatMessageDTO, ChatMessage>()
+            CreateMap<ChatMessage, ChatMessageDTO>()
                 .ForMember(dto => dto.ID, opt =>
                     opt.Ignore())
                 .ForMember(dto => dto.Content, opt =>
@@ -37,7 +37,7 @@ namespace BLL.Extensions
             #endregion
 
             #region ChatRoom
-            CreateMap<ChatRoom, ChatRoomDTO>()
+            CreateMap<ChatRoomDTO, ChatRoom>()
                 .ForMember(ent => ent.ID, opt =>
                     opt.MapFrom(dto => dto.ID))
                 .ForMember(ent => ent.Name, opt =>
@@ -45,7 +45,7 @@ namespace BLL.Extensions
                 .ForMember(ent => ent.Messages, opt =>
                     opt.MapFrom(dto => dto.Messages));
 
-            CreateMap<ChatRoomDTO, ChatRoom>()
+            CreateMap<ChatRoom, ChatRoomDTO>()
                 .ForMember(dto => dto.ID, opt =>
                     opt.Ignore())
                 .ForMember(dto => dto.Name, opt =>

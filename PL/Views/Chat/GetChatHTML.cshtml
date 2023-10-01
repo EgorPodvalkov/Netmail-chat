@@ -1,0 +1,34 @@
+﻿@model ChatWithMessagesModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chat stats</title>
+</head>
+<body>
+    @if (string.IsNullOrEmpty(Model.Error))
+    {
+        <h3 class="chat-room-name">@Model.Name</h3>
+        @foreach(var message in Model.Messages)
+        {
+            <div class="message">
+                <span class="time">[@message.SendTime.ToString("G")]</span>
+                @if (!string.IsNullOrEmpty(message.NickName))
+                {
+                    <span class="nickname"> @message.NickName: </span>
+                }
+                <span class="text">@message.Text</span>
+            </div>
+        }
+    }
+    else
+    {
+        <h4 class="error">@Model.Error</h4>
+    }
+</body>
+</html>

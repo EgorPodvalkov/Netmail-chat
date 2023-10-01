@@ -1,6 +1,7 @@
 using BLL.Extensions;
 using DAL.Context;
 using DAL.Extensions;
+using PL.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ IConfiguration configuration = builder.Configuration;
 
 builder.Services.InjectDAL(configuration);
 builder.Services.InjectBLL();
+builder.Services.AddAutoMapper(typeof(PL_BLL_MappingProfile));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
