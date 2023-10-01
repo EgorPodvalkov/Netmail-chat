@@ -43,7 +43,7 @@ namespace PL.Controllers
 
                 var responce = new ChatSendResponceModel
                 {
-                    Message = $"Your message successfully added to chat '{request.ChatName}' :) ([Hint]: Use /GetHTML or /GetJSON for reading chat)"
+                    Message = $"Your message successfully added to chat '{request.ChatName}' :) ([Hint]: Use /GetChatHTML or /GetChatJSON for reading chat)"
                 };
                 return Ok(responce);
             }
@@ -57,8 +57,7 @@ namespace PL.Controllers
             }
         }
 
-        [HttpPost("/GetJSON")]
-        public async Task<IActionResult> GetJSON()
+        private async Task<ChatWithMessagesModel> GetChatModel()
         {
             const string badJSON = "You need use json (string ChatName).";
             try
@@ -74,17 +73,30 @@ namespace PL.Controllers
                 var chatDTO = await _chatRoomBS.GetWithMessagesByNameAsync(request.ChatName)
                     ?? throw new Exception($"No chatroom with name '{request.ChatName}' :(");
 
-                var responce = _mapper.Map<ChatWithMessagesModel>(chatDTO);
-                return Ok(responce);
+                var model = _mapper.Map<ChatWithMessagesModel>(chatDTO);
+                return model;
             }
             catch (Exception ex)
             {
-                var responce = new ChatWithMessagesModel
+                return new ChatWithMessagesModel
                 {
                     Error = ex.Message
                 };
-                return Ok(responce);
             }
+        }
+
+        [HttpPost("/GetChatJSON")]
+        public async Task<IActionResult> GetChatJSON()
+        {
+            var model = await GetChatModel();
+            return Ok(model);
+        }
+
+        [HttpPost("/GetChatHTML")]
+        public async Task<IActionResult> GetChatHTML()
+        {
+            var model = await GetChatModel();
+            return View(model);
         }
     }
 }
