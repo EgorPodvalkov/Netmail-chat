@@ -9,7 +9,7 @@ namespace DAL.Repositories
     {
         public ArticleRepository(NetmailChatDatabaseContext db) : base(db) { }
 
-        public async Task<IEnumerable<Article>> GetArticlesWithEditors(int skip = 0, int? take = null)
+        public async Task<IEnumerable<Article>> GetArticlesWithEditorsAsync(int skip = 0, int? take = null)
         {
             var articles = _db.Set<Article>()
                 .Include(x => x.Editor)

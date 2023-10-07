@@ -38,6 +38,7 @@ namespace BLL.Services
             var entity = _mapper.Map<ChatMessage>(dto);
 
             await _repo.AddAsync(entity);
+            await _uow.SaveAsync();
         }
 
         public async Task AddMessageAsync(Guid chatRoomID, string content, string? nickName)

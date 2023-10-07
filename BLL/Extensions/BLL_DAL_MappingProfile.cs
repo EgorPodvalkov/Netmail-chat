@@ -77,7 +77,7 @@ namespace BLL.Extensions
                 .ForMember(ent => ent.Description, opt =>
                     opt.MapFrom(dto => dto.Description))
                 .ForMember(ent => ent.SendTime, opt =>
-                    opt.MapFrom(dto => dto.SendTime))
+                    opt.MapFrom(dto => dto.SendTime ?? DateTime.Now))
                 .ForMember(ent => ent.EditorID, opt =>
                     opt.MapFrom(dto => dto.EditorID))
                 .ForMember(ent => ent.Editor, opt =>
