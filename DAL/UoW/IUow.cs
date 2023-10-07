@@ -13,6 +13,8 @@ namespace DAL.UoW
         /// Gets new or before created ChatRoomRepository
         /// </summary>
         IChatRoomRepository GetChatRoomRepository();
+        IEditorRepository GetEditorRepository();
+        IArticleRepository GetArtileRepository();
 
         /// <summary>
         /// Saves changes in database
