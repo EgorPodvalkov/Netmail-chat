@@ -53,6 +53,50 @@ namespace BLL.Extensions
                 .ForMember(dto => dto.Messages, opt =>
                     opt.MapFrom(ent => ent.Messages));
             #endregion
+
+            #region Editor
+            CreateMap<EditorDTO, Editor>()
+                .ForMember(ent => ent.ID, opt =>
+                    opt.MapFrom(dto => dto.ID))
+                .ForMember(ent => ent.Name, opt =>
+                    opt.MapFrom(dto => dto.Name));
+
+            CreateMap<Editor, EditorDTO>()
+                .ForMember(dto => dto.ID, opt =>
+                    opt.Ignore())
+                .ForMember(dto => dto.Name, opt =>
+                    opt.MapFrom(ent => ent.Name));
+            #endregion
+
+            #region Article
+            CreateMap<ArticleDTO, Article>()
+                .ForMember(ent => ent.ID, opt =>
+                    opt.MapFrom(dto => dto.ID))
+                .ForMember(ent => ent.Title, opt =>
+                    opt.MapFrom(dto => dto.Title))
+                .ForMember(ent => ent.Description, opt =>
+                    opt.MapFrom(dto => dto.Description))
+                .ForMember(ent => ent.SendTime, opt =>
+                    opt.MapFrom(dto => dto.SendTime))
+                .ForMember(ent => ent.EditorID, opt =>
+                    opt.MapFrom(dto => dto.EditorID))
+                .ForMember(ent => ent.Editor, opt =>
+                    opt.MapFrom(dto => dto.Editor));
+
+            CreateMap<Article, ArticleDTO>()
+                .ForMember(dto => dto.ID, opt =>
+                    opt.Ignore())
+                .ForMember(dto => dto.Title, opt =>
+                    opt.MapFrom(ent => ent.Title))
+                .ForMember(dto => dto.Description, opt =>
+                    opt.MapFrom(ent => ent.Description))
+                .ForMember(dto => dto.SendTime, opt =>
+                    opt.MapFrom(ent => ent.SendTime))
+                .ForMember(dto => dto.EditorID, opt =>
+                    opt.MapFrom(ent => ent.EditorID))
+                .ForMember(dto => dto.Editor, opt =>
+                    opt.MapFrom(ent => ent.Editor));
+            #endregion
         }
     }
 }
