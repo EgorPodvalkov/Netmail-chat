@@ -54,7 +54,7 @@ function OnSendMessageClick() {
 }
 
 function SendMessage(message) {
-    const sendMessageUrl = "https://localhost:7292/Send";
+    const sendMessageUrl = "https://localhost:7292/SendMessage";
 
     const chatName = $(".chat-name-area-text").val();
     //const chatName = $(".chat-room-name").val();

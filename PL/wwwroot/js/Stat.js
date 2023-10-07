@@ -5,6 +5,7 @@
 
     roomsAmount.text("");
     messagesAmount.text("");
+    articlesAmount.text("");
 
     const url = '/GetStatJSON'
     const responce = await fetch(url, {
@@ -18,5 +19,5 @@
         messagesAmount.text(stat.chatMessagesAmount);
         articlesAmount.text(stat.articlesAmount);
     }
-    else alert("Something wrong with /GetStat :(");
+    else alert(`Something wrong with ${url} :(`);
 }
