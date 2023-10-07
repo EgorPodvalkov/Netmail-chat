@@ -28,7 +28,7 @@ namespace PL.Controllers
             return View();
         }
 
-        [HttpPost("/Send")]
+        [HttpPost("/SendMessage")]
         public async Task<IActionResult> SendMessage()
         {
             const string badJSON = "You need use json (string ChatName, string? NickName, string Content).";
@@ -46,7 +46,7 @@ namespace PL.Controllers
                 var chatID = await _chatRoomBS.GetChatIDByName(request.ChatName);
                 await _chatMessageBS.AddMessageAsync(chatID, request.Content, request.NickName);
 
-                var responce = new ChatSendResponceModel
+                var responce = new BaseResponceModel
                 {
                     Message = $"Your message successfully added to chat '{request.ChatName}' :) ([Hint]: Use /GetChatHTML or /GetChatJSON for reading chat)"
                 };
@@ -54,7 +54,7 @@ namespace PL.Controllers
             }
             catch (Exception ex)
             {
-                var responce = new ChatSendResponceModel
+                var responce = new BaseResponceModel
                 {
                     Error = ex.Message
                 };

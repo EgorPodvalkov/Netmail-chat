@@ -1,6 +1,6 @@
 ﻿namespace PL.Models
 {
-    public class ChatStatModel
+    public class StatModel
     {
         /// <summary>
         /// Amount of all chat rooms
@@ -11,5 +11,6 @@
         /// Amount of all chat messages
         /// </summary>
         public int ChatMessagesAmount { get; set; }
+        public int ArticlesAmount { get; set; }
     }
 }

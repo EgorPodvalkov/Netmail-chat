@@ -11,7 +11,7 @@ namespace BLL.Extensions
             #region ChatMessage
             CreateMap<ChatMessageDTO, ChatMessage>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Content, opt =>
                     opt.MapFrom(dto => dto.Content))
                 .ForMember(ent => ent.NickName, opt =>
@@ -25,7 +25,7 @@ namespace BLL.Extensions
 
             CreateMap<ChatMessage, ChatMessageDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Content, opt =>
                     opt.MapFrom(ent => ent.Content))
                 .ForMember(dto => dto.NickName, opt =>
@@ -39,7 +39,7 @@ namespace BLL.Extensions
             #region ChatRoom
             CreateMap<ChatRoomDTO, ChatRoom>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Name, opt =>
                     opt.MapFrom(dto => dto.Name))
                 .ForMember(ent => ent.Messages, opt =>
@@ -47,11 +47,55 @@ namespace BLL.Extensions
 
             CreateMap<ChatRoom, ChatRoomDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Name, opt =>
                     opt.MapFrom(ent => ent.Name))
                 .ForMember(dto => dto.Messages, opt =>
                     opt.MapFrom(ent => ent.Messages));
+            #endregion
+
+            #region Editor
+            CreateMap<EditorDTO, Editor>()
+                .ForMember(ent => ent.ID, opt =>
+                    opt.Ignore())
+                .ForMember(ent => ent.Name, opt =>
+                    opt.MapFrom(dto => dto.Name));
+
+            CreateMap<Editor, EditorDTO>()
+                .ForMember(dto => dto.ID, opt =>
+                    opt.MapFrom(ent => ent.ID))
+                .ForMember(dto => dto.Name, opt =>
+                    opt.MapFrom(ent => ent.Name));
+            #endregion
+
+            #region Article
+            CreateMap<ArticleDTO, Article>()
+                .ForMember(ent => ent.ID, opt =>
+                    opt.Ignore())
+                .ForMember(ent => ent.Title, opt =>
+                    opt.MapFrom(dto => dto.Title))
+                .ForMember(ent => ent.Description, opt =>
+                    opt.MapFrom(dto => dto.Description))
+                .ForMember(ent => ent.SendTime, opt =>
+                    opt.MapFrom(dto => dto.SendTime ?? DateTime.Now))
+                .ForMember(ent => ent.EditorID, opt =>
+                    opt.MapFrom(dto => dto.EditorID))
+                .ForMember(ent => ent.Editor, opt =>
+                    opt.MapFrom(dto => dto.Editor));
+
+            CreateMap<Article, ArticleDTO>()
+                .ForMember(dto => dto.ID, opt =>
+                    opt.MapFrom(ent => ent.ID))
+                .ForMember(dto => dto.Title, opt =>
+                    opt.MapFrom(ent => ent.Title))
+                .ForMember(dto => dto.Description, opt =>
+                    opt.MapFrom(ent => ent.Description))
+                .ForMember(dto => dto.SendTime, opt =>
+                    opt.MapFrom(ent => ent.SendTime))
+                .ForMember(dto => dto.EditorID, opt =>
+                    opt.MapFrom(ent => ent.EditorID))
+                .ForMember(dto => dto.Editor, opt =>
+                    opt.MapFrom(ent => ent.Editor));
             #endregion
         }
     }

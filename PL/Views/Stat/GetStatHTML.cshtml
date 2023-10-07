@@ -1,4 +1,4 @@
-﻿@model ChatStatModel
+﻿@model StatModel
 
 <!DOCTYPE html>
 
@@ -15,6 +15,10 @@
     <h4>
         Number of sended messages: 
         <span id="ChatMessagesAmount">@Model.ChatMessagesAmount</span>
+    </h4>
+    <h4>
+        Number of posted articles: 
+        <span id="ArticlesAmount">@Model.ArticlesAmount</span>
     </h4>
 
     <button onclick="OnReloadButtonClick()">Reload!</button>

@@ -10,6 +10,8 @@ namespace DAL.UoW
 
         private IChatMessageRepository? _messageRepository;
         private IChatRoomRepository? _roomRepository;
+        private IEditorRepository? _editorRepository;
+        private IArticleRepository? _articleRepository;
 
         public UoW(NetmailChatDatabaseContext db)
         {
@@ -28,6 +30,20 @@ namespace DAL.UoW
             _roomRepository ??= new ChatRoomRepository(_db);
 
             return _roomRepository;
+        }
+
+        public IEditorRepository GetEditorRepository()
+        {
+            _editorRepository ??= new EditorRepository(_db);
+
+            return _editorRepository;
+        }
+
+        public IArticleRepository GetArtileRepository()
+        {
+            _articleRepository ??= new ArticleRepository(_db);
+
+            return _articleRepository;
         }
 
         public async Task<int> SaveAsync()
