@@ -22,6 +22,11 @@ namespace PL.Controllers
             _chatRoomBS = chatRoomBS;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
 
         [HttpPost("/Send")]
         public async Task<IActionResult> SendMessage()
