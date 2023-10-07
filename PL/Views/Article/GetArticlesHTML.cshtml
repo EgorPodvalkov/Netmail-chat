@@ -1,0 +1,66 @@
+﻿@model ArticlesModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>News</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: rgb(242, 242, 242);
+        }
+        .info{
+            padding-bottom: 25px;
+            padding-left: 35px;
+        }
+        .article{
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        .subheader{
+            color: rgb(170, 170, 170);
+            font-size: 13px;
+        }
+        .editor-name{
+            font-weight: 600;
+        }
+        .description{
+            margin-top: 20px;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            border: 1px solid rgb(220, 220, 220);
+        }
+    </style>
+
+    <div class="info"> Articles amount: @Model.TotalArticlesAmount </div>
+
+    @foreach(var article in Model.Articles)
+    {
+        <div class="article">
+            <h4 class="title">@article.Title</h4>
+            
+            <div class="subheader">
+                <span class="datetime">[@article.SendTime]</span>
+                <span class="editor">
+                    Writed by: 
+                    <span class="editor-name">@article.EditorName</span>
+                </span>
+            </div>
+
+            <div class="description">
+                @article.Description
+            </div>
+        </div>
+    }
+
+    <script>
+    </script>
+</body>
+</html>

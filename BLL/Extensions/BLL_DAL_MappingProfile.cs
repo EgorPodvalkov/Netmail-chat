@@ -11,7 +11,7 @@ namespace BLL.Extensions
             #region ChatMessage
             CreateMap<ChatMessageDTO, ChatMessage>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Content, opt =>
                     opt.MapFrom(dto => dto.Content))
                 .ForMember(ent => ent.NickName, opt =>
@@ -25,7 +25,7 @@ namespace BLL.Extensions
 
             CreateMap<ChatMessage, ChatMessageDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Content, opt =>
                     opt.MapFrom(ent => ent.Content))
                 .ForMember(dto => dto.NickName, opt =>
@@ -39,7 +39,7 @@ namespace BLL.Extensions
             #region ChatRoom
             CreateMap<ChatRoomDTO, ChatRoom>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Name, opt =>
                     opt.MapFrom(dto => dto.Name))
                 .ForMember(ent => ent.Messages, opt =>
@@ -47,7 +47,7 @@ namespace BLL.Extensions
 
             CreateMap<ChatRoom, ChatRoomDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Name, opt =>
                     opt.MapFrom(ent => ent.Name))
                 .ForMember(dto => dto.Messages, opt =>
@@ -57,13 +57,13 @@ namespace BLL.Extensions
             #region Editor
             CreateMap<EditorDTO, Editor>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Name, opt =>
                     opt.MapFrom(dto => dto.Name));
 
             CreateMap<Editor, EditorDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Name, opt =>
                     opt.MapFrom(ent => ent.Name));
             #endregion
@@ -71,7 +71,7 @@ namespace BLL.Extensions
             #region Article
             CreateMap<ArticleDTO, Article>()
                 .ForMember(ent => ent.ID, opt =>
-                    opt.MapFrom(dto => dto.ID))
+                    opt.Ignore())
                 .ForMember(ent => ent.Title, opt =>
                     opt.MapFrom(dto => dto.Title))
                 .ForMember(ent => ent.Description, opt =>
@@ -85,7 +85,7 @@ namespace BLL.Extensions
 
             CreateMap<Article, ArticleDTO>()
                 .ForMember(dto => dto.ID, opt =>
-                    opt.Ignore())
+                    opt.MapFrom(ent => ent.ID))
                 .ForMember(dto => dto.Title, opt =>
                     opt.MapFrom(ent => ent.Title))
                 .ForMember(dto => dto.Description, opt =>

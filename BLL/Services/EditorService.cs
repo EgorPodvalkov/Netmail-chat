@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BLL.DTOs;
 using BLL.Interfaces;
 using DAL.Interfaces;
 using DAL.UoW;
@@ -18,9 +19,11 @@ namespace BLL.Services
             _repo = uow.GetEditorRepository();
         }
 
-        public async Task<Guid?> GetEditorIDByPassAsync(string pass)
+        public async Task<EditorDTO?> GetEditorIDByPassAsync(string pass)
         {
-            return await _repo.GetEditorIDByPassAsync(pass);
+            var entity = await _repo.GetEditorIDByPassAsync(pass);
+
+            return _mapper.Map<EditorDTO>(entity);
         }
     }
 }

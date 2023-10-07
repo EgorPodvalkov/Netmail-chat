@@ -26,6 +26,10 @@ namespace BLL.Services
 
             return _mapper.Map<IEnumerable<ArticleDTO>>(entities);
         }
+        public async Task<int> GetArticlesAmountAsync()
+        {
+            return await _repo.GetArticlesAmountAsync();
+        }
 
         public async Task AddArticleAsync(ArticleDTO dto)
         {

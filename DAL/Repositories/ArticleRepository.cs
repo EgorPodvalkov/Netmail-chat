@@ -13,12 +13,18 @@ namespace DAL.Repositories
         {
             var articles = _db.Set<Article>()
                 .Include(x => x.Editor)
+                .OrderByDescending(x => x.SendTime)
                 .Skip(skip);
 
             if (take is not null)
                 articles = articles.Take(take.Value);
 
             return await articles.ToListAsync();
+        }
+
+        public async Task<int> GetArticlesAmountAsync()
+        {
+            return await _db.Set<Article>().CountAsync();
         }
     }
 }

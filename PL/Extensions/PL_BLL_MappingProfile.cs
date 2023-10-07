@@ -25,6 +25,19 @@ namespace PL.Extensions
                 .ForMember(mod => mod.Messages, opt =>
                     opt.MapFrom(dto => dto.Messages));
             #endregion
+
+            #region
+            CreateMap<ArticleDTO, ArticleModel>()
+                .ForMember(mod => mod.Title, opt =>
+                    opt.MapFrom(dto => dto.Title))
+                .ForMember(mod => mod.Description, opt =>
+                    opt.MapFrom(dto => dto.Description))
+                .ForMember(mod => mod.SendTime, opt =>
+                    opt.MapFrom(dto => dto.SendTime))
+                .ForMember(mod => mod.EditorName, opt =>
+                    opt.MapFrom(dto =>
+                        dto.Editor != null ? dto.Editor.Name : "Err:NoName"));
+            #endregion
         }
     }
 }

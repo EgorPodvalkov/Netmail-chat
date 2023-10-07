@@ -47,6 +47,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Stat}/{action=Chat}");
+    pattern: "{controller=Article}/{action=Index}");
+//pattern: "{controller=Article}/{action=GetArticlesHTML}");
+//pattern: "{controller=Stat}/{action=Chat}");
 
 app.Run();

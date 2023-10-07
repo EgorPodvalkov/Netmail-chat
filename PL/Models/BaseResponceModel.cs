@@ -1,6 +1,6 @@
 ﻿namespace PL.Models
 {
-    public class ChatSendResponceModel
+    public class BaseResponceModel
     {
         public string? Message { get; set; }
         public string? Error { get; set; }

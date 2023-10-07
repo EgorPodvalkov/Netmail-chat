@@ -1,7 +1,9 @@
-﻿namespace BLL.Interfaces
+﻿using BLL.DTOs;
+
+namespace BLL.Interfaces
 {
     public interface IEditorService
     {
-        Task<Guid?> GetEditorIDByPassAsync(string pass);
+        Task<EditorDTO?> GetEditorIDByPassAsync(string pass);
     }
 }

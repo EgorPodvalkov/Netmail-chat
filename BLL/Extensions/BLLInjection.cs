@@ -12,6 +12,8 @@ namespace BLL.Extensions
 
             services.AddScoped<IChatMessageService, ChatMessageService>();
             services.AddScoped<IChatRoomService, ChatRoomService>();
+            services.AddScoped<IEditorService, EditorService>();
+            services.AddScoped<IArticleService, ArticleService>();
         }
 
     }

@@ -9,9 +9,9 @@ namespace DAL.Repositories
     {
         public EditorRepository(NetmailChatDatabaseContext db) : base(db) { }
 
-        public async Task<Guid?> GetEditorIDByPassAsync(string pass)
+        public async Task<Editor?> GetEditorIDByPassAsync(string pass)
         {
-            return (await _db.Set<Editor>().FirstOrDefaultAsync(x => x.Pass == pass))?.ID;
+            return await _db.Set<Editor>().FirstOrDefaultAsync(x => x.Pass == pass);
         }
     }
 }
