@@ -24,6 +24,11 @@ Before you can run the app, you should install mysql database client and get you
 ### Running
 You should build the solution and run the server.
 
+## App Guide
+The list of actual Endpoints you can see and try in my postman public folder. ☺️
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/16304928-905792eb-a1b6-43d5-9733-8d9df51ff869?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D16304928-905792eb-a1b6-43d5-9733-8d9df51ff869%26entityType%3Dcollection%26workspaceId%3D0a384d53-9c4a-45f8-80b3-6f3a34c2bc0f)
+
 ## Authors
 * **Egor Podvalkov** - *Initial work* - [My GitHub](https://github.com/EgorPodvalkov)
 
