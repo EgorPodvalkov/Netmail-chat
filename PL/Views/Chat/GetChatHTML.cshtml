@@ -1,0 +1,72 @@
+﻿@model ChatWithMessagesModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chat stats</title>
+</head>
+<body>
+    <style>
+        .chat-room-name{
+            padding-left: 10px;
+        }
+        .nickname{
+            font-weight:600;
+        }
+
+        .time {
+            font-size: 13px;
+            color: #464646;
+        }
+        .date {
+            font-weight: 600;
+            padding: 5px;
+            padding-left: 40px;
+        }
+        .message{
+            padding:2px;
+        }
+    </style>
+
+    @if (string.IsNullOrEmpty(Model.Error))
+    {
+        <h3 class="chat-room-name">@Model.Name</h3>
+
+        // Date displaying
+        var day = Model.Messages.FirstOrDefault()?.SendTime.Date;
+        if (day is not null)
+        {
+            <div class="date">@day.Value.ToString("d")</div>
+        }
+
+        @foreach(var message in Model.Messages)
+        {
+            // Date displaying
+            var tempDay = message.SendTime.Date;
+            if (tempDay != day)
+            {
+                day = tempDay;
+                <div class="date">@day.Value.ToString("d")</div>
+            }
+
+            <div class="message">
+                <span class="time">[@message.SendTime.ToString("T")]</span>
+                @if (!string.IsNullOrEmpty(message.NickName))
+                {
+                    <span class="nickname"> @message.NickName: </span>
+                }
+                <span class="text">@message.Text</span>
+            </div>
+        }
+    }
+    else
+    {
+        <h4 class="error">@Model.Error</h4>
+    }
+</body>
+</html>
