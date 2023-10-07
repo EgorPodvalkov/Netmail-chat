@@ -40,13 +40,13 @@ namespace BLL.Services
             await _repo.AddAsync(entity);
         }
 
-        public async Task AddMessageAsync(Guid chatRoomID, string content, string? NickName)
+        public async Task AddMessageAsync(Guid chatRoomID, string content, string? nickName)
         {
             var message = new ChatMessage
             {
                 ChatRoomID = chatRoomID,
                 Content = content,
-                NickName = NickName,
+                NickName = string.IsNullOrEmpty(nickName) ? null : nickName,
                 SendTime = DateTime.Now
             };
 
