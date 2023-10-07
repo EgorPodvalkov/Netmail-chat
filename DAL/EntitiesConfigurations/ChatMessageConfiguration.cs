@@ -20,6 +20,5 @@ namespace DAL.EntitiesConfigurations
             builder.Property(x => x.SendTime)
                 .IsRequired();
         }
-
     }
 }
